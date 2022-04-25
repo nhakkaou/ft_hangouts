@@ -5,32 +5,57 @@ import Avatar from "./Avatar";
 const UserView = styled.View`
   width: 100%;
   height: 12%;
-  background-color: #aaffcc;
+  background-color: #fff;
   flex-direction: row;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1px;
 `;
 const NameView = styled.View`
   width: 100%;
   height: 100%;
   flex-direction: row;
 `;
-const User = ({ name, time, message }) => {
+const User = ({ name, time, message, read = true }) => {
+  const TextView = styled.Text`
+    font-size: ${(props) => (props.fontSize ? props.fontSize : "12")}px;
+    font-weight: {
+      ${(props) => (!props.read ? "bold" : "normal")}
+    }
+  `;
   return (
     <UserView>
       <NameView>
         <Avatar />
         <View
           style={{
-            justifyContent: "space-between",
-            flexDirection: "row",
-            width: "100%",
+            flexDirection: "column",
+            justifyContent: "center",
             margin: 15,
           }}
         >
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{name}</Text>
-          <Text>{time}</Text>
+          <View
+            style={{
+              justifyContent: "space-between",
+              flexDirection: "row",
+
+              alignItems: "center",
+              width: "70%",
+            }}
+          >
+            <TextView fontSize={18} read={read}>
+              {name}
+            </TextView>
+            <TextView fontSize={13} read={read}>
+              {time}
+            </TextView>
+          </View>
+          <View>
+            <TextView fontSize={13} read={read}>
+              {message}
+            </TextView>
+          </View>
         </View>
       </NameView>
-      <Text>{message}</Text>
     </UserView>
   );
 };
