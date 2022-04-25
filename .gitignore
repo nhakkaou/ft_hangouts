@@ -1,3 +1,5 @@
 /node_modules
 .gitignore.swp
 .DS*
+.expo
+.expo*
