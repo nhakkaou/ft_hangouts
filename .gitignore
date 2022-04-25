@@ -1,3 +1,11 @@
 /node_modules
 .gitignore.swp
 .DS*
+.expo
+.expo-cli
+.expo-cli-cache
+.expo-cli-logs
+.expo-cli-node-cache
+.expo-cli-node-logs
+.expo-cli-web-cache
+.expo*

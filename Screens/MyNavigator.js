@@ -6,7 +6,7 @@ const MyNavigator = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ft_hangouts" component={HomeScreen} />
+      <Stack.Screen name="ft_hangouts" component={Home} />
     </Stack.Navigator>
   );
 };
