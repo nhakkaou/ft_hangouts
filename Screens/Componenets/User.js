@@ -8,20 +8,19 @@ const UserView = styled.View`
   background-color: #fff;
   flex-direction: row;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
-  margin-bottom: 1px;
 `;
 const NameView = styled.View`
   width: 100%;
   height: 100%;
   flex-direction: row;
 `;
+const TextView = styled.Text`
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "12")}px;
+  font-weight: {
+    ${(props) => (!props.read ? "bold" : "normal")}
+  }
+`;
 const User = ({ name, time, message, read = true }) => {
-  const TextView = styled.Text`
-    font-size: ${(props) => (props.fontSize ? props.fontSize : "12")}px;
-    font-weight: {
-      ${(props) => (!props.read ? "bold" : "normal")}
-    }
-  `;
   return (
     <UserView>
       <NameView>
@@ -37,7 +36,6 @@ const User = ({ name, time, message, read = true }) => {
             style={{
               justifyContent: "space-between",
               flexDirection: "row",
-
               alignItems: "center",
               width: "70%",
             }}
