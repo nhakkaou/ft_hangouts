@@ -1,25 +1,12 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MyNavigator from "./Screens/MyNavigator";
-
+import Profile from "./Screens/Profile";
+import Contacts from "./Screens/Contacts";
 const Tab = createBottomTabNavigator();
-const SettingsScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-};
-const Contacts = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Contacts!</Text>
-    </View>
-  );
-};
+
 function App() {
   return (
     <NavigationContainer>
@@ -36,8 +23,15 @@ function App() {
         />
         <Tab.Screen
           options={{
-            headerShown: false,
-
+            headerLeft: () => (
+              <MaterialCommunityIcons
+                name="arrow-left"
+                size={20}
+                style={{
+                  marginLeft: 10,
+                }}
+              />
+            ),
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="contacts"
@@ -61,7 +55,7 @@ function App() {
             ),
           }}
           name="Profile"
-          component={SettingsScreen}
+          component={Profile}
         />
       </Tab.Navigator>
     </NavigationContainer>

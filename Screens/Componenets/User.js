@@ -19,6 +19,7 @@ const TextView = styled.Text`
   font-weight: {
     ${(props) => (!props.read ? "bold" : "normal")}
   }
+  color: #000;
 `;
 const User = ({ name, time, message, read = true }) => {
   return (

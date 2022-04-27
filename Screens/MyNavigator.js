@@ -7,7 +7,7 @@ const MyNavigator = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Add">
+    <Stack.Navigator initialRouteName="Messages">
       <Stack.Screen
         name="Ft-Hangouts"
         component={Home}
