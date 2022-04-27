@@ -30,7 +30,7 @@ const AddUser = () => {
         style={{ width: "80%", justifyContent: "center", alignItems: "center" }}
       >
         <Avatar />
-        <Text>AddUser</Text>
+
         <Input
           placeholder="Contact name"
           placeholderTextColor="gray"
