@@ -6,4 +6,13 @@ const AvatarUser = styled.View`
   margin: 5px;
   border: none;
 `;
-export { AvatarUser };
+const Color = styled.View`
+  width: 50px;
+  height: 50px;
+  border-radius: 50;
+  margin: 5px;
+  background-color: ${(props) => props.color};
+  border: ${(props) =>
+    props.selected === true ? "2px solid #00d084" : "none"};
+`;
+export { AvatarUser, Color };

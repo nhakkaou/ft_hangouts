@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, SafeAreaView, Text, View } from "react-native";
 import Avatar from "./Componenets/Avatar";
-
+import ChangeColor from "./Componenets/ChangeColor";
 const Profile = () => {
   return (
     <SafeAreaView>
@@ -28,6 +28,7 @@ const Profile = () => {
           </View>
         </View>
         <Text>Profile</Text>
+        <ChangeColor />
       </View>
     </SafeAreaView>
   );
