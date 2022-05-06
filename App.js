@@ -1,16 +1,53 @@
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MyNavigator from "./Screens/MyNavigator";
 import Profile from "./Screens/Profile";
 import Contacts from "./Screens/Contacts";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Tab = createBottomTabNavigator();
-
 function App() {
+  const [MyTheme, setTheme] = React.useState({
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: "#00a8ff",
+      background: "rgb(242, 242, 242)",
+      card: "#00a8ff",
+      text: "#fff",
+      border: "rgb(200, 200, 200)",
+      notification: "rgb(255, 45, 85)",
+      divider: "rgb(200, 200, 200)",
+      placeholder: "rgb(200, 200, 200)",
+      backdrop: "rgb(242, 242, 242)",
+    },
+  });
+  React.useEffect(() => {
+    AsyncStorage.getItem("Color").then((color) => {
+      if (color) {
+        setTheme({
+          ...MyTheme,
+          colors: {
+            ...MyTheme.colors,
+            primary: color,
+            card: color,
+          },
+        });
+      } else {
+        AsyncStorage.setItem("Color", "#00a8ff");
+      }
+    });
+  }, []);
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
+    <NavigationContainer theme={MyTheme}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: {
+            backgroundColor: "rgb(255, 255, 255)",
+          },
+        }}
+      >
         <Tab.Screen
           options={{
             headerShown: false,

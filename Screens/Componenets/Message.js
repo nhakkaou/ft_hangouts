@@ -1,8 +1,11 @@
+import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { View, Text } from "react-native";
 import Avatar from "./Avatar";
 
 const Message = ({ avatarSource }) => {
+  const { colors } = useTheme();
+
   return (
     <View>
       {avatarSource ? (
@@ -10,7 +13,7 @@ const Message = ({ avatarSource }) => {
           <Avatar style={{ width: 50, height: 50 }} />
           <View
             style={{
-              backgroundColor: "#00a8ff",
+              backgroundColor: colors.card,
               borderRadius: 5,
               padding: 5,
               margin: 5,

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Color } from "./Style/Profile";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const ChangeColor = () => {
+  const [ColorSelected, setColor] = useState("#00a8ff");
+  useEffect(() => {
+    AsyncStorage.getItem("Color").then((color) => {
+      if (color) {
+        setColor(color);
+      }
+    });
+  }, []);
+  const ft_ChangeColor = async (color) => {
+    await AsyncStorage.setItem("Color", color);
+    setColor(color);
+  };
   const colors = [
     "#00a8ff",
     "#69d2e7",
@@ -28,8 +41,12 @@ const ChangeColor = () => {
   return (
     <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
       {colors.map((color, key) => (
-        <TouchableOpacity>
-          <Color color={color} key={key} selected={key === 0 ? true : false} />
+        <TouchableOpacity onPress={() => ft_ChangeColor(color)}>
+          <Color
+            color={color}
+            key={key}
+            selected={color === ColorSelected ? true : false}
+          />
         </TouchableOpacity>
       ))}
       <TouchableOpacity>

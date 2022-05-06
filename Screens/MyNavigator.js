@@ -17,9 +17,6 @@ const MyNavigator = () => {
             fontWeight: "bold",
             fontSize: 23,
           },
-          headerStyle: {
-            backgroundColor: "#00a8ff",
-          },
         }}
       />
       <Stack.Screen
@@ -31,9 +28,6 @@ const MyNavigator = () => {
             fontWeight: "bold",
             fontSize: 23,
           },
-          headerStyle: {
-            backgroundColor: "#00a8ff",
-          },
         }}
       />
       <Stack.Screen
@@ -44,9 +38,6 @@ const MyNavigator = () => {
             color: "#fff",
             fontWeight: "bold",
             fontSize: 23,
-          },
-          headerStyle: {
-            backgroundColor: "#00a8ff",
           },
         }}
       />
