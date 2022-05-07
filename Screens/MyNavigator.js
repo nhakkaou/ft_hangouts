@@ -7,9 +7,9 @@ const MyNavigator = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Messages">
+    <Stack.Navigator initialRouteName="Ft-Hangouts">
       <Stack.Screen
-        name="Ft-Hangouts"
+        name="Hangouts"
         component={Home}
         options={{
           headerTitleStyle: {

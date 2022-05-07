@@ -7,7 +7,6 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     AsyncStorage.getItem("Color").then((color) => {
       if (color) {
-        console.log("COLOR: ", color);
         setColor(color);
       }
     });

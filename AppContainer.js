@@ -5,7 +5,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import MyNavigator from "./Screens/MyNavigator";
 import Profile from "./Screens/Profile";
 import Contacts from "./Screens/Contacts";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserContext } from "./Context/User";
 const Tab = createBottomTabNavigator();
 function App() {
@@ -25,7 +24,6 @@ function App() {
     },
   });
   const data = React.useContext(UserContext);
-  console.log("DATA", data);
   React.useEffect(() => {
     if (data?.ColorSelected)
       setTheme({
@@ -36,25 +34,16 @@ function App() {
           card: data?.ColorSelected,
         },
       });
-    // AsyncStorage.getItem("Color").then((color) => {
-    //   if (color) {
-    //     setTheme({
-    //       ...MyTheme,
-    //       colors: {
-    //         ...MyTheme.colors,
-    //         primary: color,
-    //         card: color,
-    //       },
-    //     });
-    //   } else {
-    //     AsyncStorage.setItem("Color", "#00a8ff");
-    //   }
-    // });
   }, [data?.ColorSelected]);
   return (
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
         screenOptions={{
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 23,
+          },
           tabBarStyle: {
             backgroundColor: "rgb(255, 255, 255)",
           },
@@ -67,20 +56,11 @@ function App() {
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),
           }}
-          name="Messages"
+          name="Home"
           component={MyNavigator}
         />
         <Tab.Screen
           options={{
-            headerLeft: () => (
-              <MaterialCommunityIcons
-                name="arrow-left"
-                size={20}
-                style={{
-                  marginLeft: 10,
-                }}
-              />
-            ),
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="contacts"

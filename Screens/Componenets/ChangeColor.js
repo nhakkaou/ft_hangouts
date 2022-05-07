@@ -26,15 +26,16 @@ const ChangeColor = () => {
     "#c7f464",
     "#ff6b6b",
     "#c44d58",
+    "#F72585",
   ];
-  console.log(ColorSelected);
+
   return (
     <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
-      {colors.map((color, key) => (
+      {colors.map((color) => (
         <TouchableOpacity onPress={() => ft_ChangeColor(color)}>
           <Color
             color={color}
-            key={key}
+            key={color}
             selected={color === ColorSelected ? true : false}
           />
         </TouchableOpacity>

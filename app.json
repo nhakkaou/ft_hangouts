@@ -3,8 +3,8 @@
     "name": "ft_hangouts",
     "slug": "ft_hangouts",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "orientation": "default",
+    "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/Group1.png",
       "resizeMode": "contain",

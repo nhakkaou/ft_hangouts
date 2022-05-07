@@ -1,12 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import Avatar from "./Avatar";
+
 const UserView = styled.View`
   width: 100%;
-  height: 12%;
-  background-color: #fff;
-  flex-direction: row;
+  height: 15%;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
 `;
 const NameView = styled.View`
@@ -14,45 +13,39 @@ const NameView = styled.View`
   height: 100%;
   flex-direction: row;
 `;
-const TextView = styled.Text`
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "12")}px;
-  font-weight: {
-    ${(props) => (!props.read ? "bold" : "normal")}
-  }
-  color: #000;
-`;
-const User = ({ name, time, message, read = true }) => {
+
+const User = ({ name, time, message, read = true, img }) => {
+  console.log(name, read);
   return (
-    <UserView>
+    <UserView read={read}>
       <NameView>
-        <Avatar />
+        <Avatar source={img} />
         <View
           style={{
-            flexDirection: "column",
-            justifyContent: "center",
-            margin: 15,
+            // backgroundColor: "yellow",
+            height: 70,
+            padding: 15,
+            width: "80%",
+            alignContent: "center",
           }}
         >
           <View
-            style={{
-              justifyContent: "space-between",
-              flexDirection: "row",
-              alignItems: "center",
-              width: "70%",
-            }}
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <TextView fontSize={18} read={read}>
+            <Text
+              style={{ fontSize: 20, fontWeight: !read ? "bold" : "normal" }}
+            >
               {name}
-            </TextView>
-            <TextView fontSize={13} read={read}>
+            </Text>
+            <Text
+              style={{ fontSize: 13, fontWeight: !read ? "bold" : "normal" }}
+            >
               {time}
-            </TextView>
+            </Text>
           </View>
-          <View>
-            <TextView fontSize={13} read={read}>
-              {message}
-            </TextView>
-          </View>
+          <Text style={{ fontSize: 17, fontWeight: !read ? "bold" : "normal" }}>
+            {message}
+          </Text>
         </View>
       </NameView>
     </UserView>
