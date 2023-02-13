@@ -15,7 +15,6 @@ const NameView = styled.View`
 `;
 
 const User = ({ name, time, message, read = true, img }) => {
-  console.log(name, read);
   return (
     <UserView read={read}>
       <NameView>

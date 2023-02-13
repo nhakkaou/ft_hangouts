@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import User from "./Componenets/User";
 const Home = ({ navigation }) => {
-  console.log(navigation);
   const renderListItem = ({ item }) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate("Messages")}>
