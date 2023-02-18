@@ -1,13 +1,8 @@
-import React from "react";
-import {
-  View,
-  Text,
-  InputAccessoryView,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React, { useContext, useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import Avatar from "./Componenets/Avatar";
 import styled from "styled-components";
+import { UserContext } from "../Context/User";
 
 const Input = styled.TextInput`
   width: 100%;
@@ -18,6 +13,12 @@ const Input = styled.TextInput`
   padding: 10px;
 `;
 const AddUser = () => {
+  const { addContat } = useContext(UserContext);
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const saveContact = async () => {
+    if (phone && name) await addContat(phone, name);
+  };
   return (
     <View
       style={{
@@ -35,14 +36,14 @@ const AddUser = () => {
           placeholder="Contact name"
           placeholderTextColor="gray"
           onChangeText={(text) => {
-            console.log(text);
+            setName(text);
           }}
         />
         <Input
           placeholder="Phone number"
           placeholderTextColor="gray"
           onChangeText={(text) => {
-            console.log(text);
+            setPhone(text);
           }}
           keyboardType="numeric"
         />
@@ -55,6 +56,7 @@ const AddUser = () => {
             alignItems: "center",
             borderRadius: 5,
           }}
+          onPress={saveContact}
         >
           <Text style={{ color: "#fff", fontWeight: "bold" }}>
             Save contact

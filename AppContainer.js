@@ -60,7 +60,7 @@ function App() {
           component={MyNavigator}
         />
         <Tab.Screen
-          options={{
+          options={({ navigation }) => ({
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="contacts"
@@ -68,7 +68,15 @@ function App() {
                 size={size}
               />
             ),
-          }}
+            headerRight: () => (
+              <MaterialCommunityIcons
+                name="plus"
+                color={"#fff"}
+                size={30}
+                onPress={() => navigation.navigate("Add")}
+              />
+            ),
+          })}
           name="Contacts"
           component={Contacts}
         />
