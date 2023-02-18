@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import Avatar from "./Avatar";
 
-const Contact = () => {
+const Contact = ({ name, phone, show }) => {
   return (
     <View
       style={{
@@ -25,9 +25,10 @@ const Contact = () => {
           justifyContent: "center",
         }}
       >
-        <Text style={{ fontSize: 18, marginBottom: 3 }}>Nour Dine</Text>
-        <Text>+212659281381</Text>
+        <Text style={{ fontSize: 18, marginBottom: 3 }}>{name}</Text>
+        <Text>{phone}</Text>
       </View>
+      {show && <View></View>}
     </View>
   );
 };

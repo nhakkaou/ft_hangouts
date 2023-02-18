@@ -1,44 +1,41 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Contact from "./Componenets/Contact";
 import { FlatList, SafeAreaView, TouchableOpacity, View } from "react-native";
+import { UserContext } from "../Context/User";
 const Contacts = () => {
+  const [users, setUsers] = useState([]);
+  const [target, setTarg] = useState();
+  const { getContat } = useContext(UserContext);
+  useEffect(() => {
+    async function getUsers() {
+      try {
+        const result = await getContat();
+        console.log(result);
+        if (result) setUsers(result.rows._array);
+      } catch (e) {
+        console.log("ERROR", e);
+      }
+    }
+    getUsers();
+  }, []);
   return (
     <SafeAreaView>
       <View>
         <FlatList
-          data={[
-            {
-              key: "1",
-              name: "Nour Dine",
-              phone: "+212659281381",
-            },
-            {
-              key: "2",
-              name: "Nour Dine",
-              phone: "+212659281381",
-            },
-            {
-              key: "3",
-              name: "Nour Dine",
-              phone: "+212659281381",
-            },
-            {
-              key: "4",
-              name: "Nour Dine",
-              phone: "+212659281381",
-            },
-            {
-              key: "5",
-              name: "Nour Dine",
-              phone: "+212659281381",
-            },
-          ]}
+          data={users}
           renderItem={({ item }) => (
-            <TouchableOpacity>
-              <Contact name={item.name} phone={item.phone} />
+            <TouchableOpacity
+              onLongPress={() => setTarg(item.id)}
+              key={item.id}
+            >
+              <Contact
+                name={item.name}
+                phone={item.phone}
+                show={target === item.id}
+              />
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.key}
+          keyExtractor={(item) => item.id}
         />
       </View>
     </SafeAreaView>

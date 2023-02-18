@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   FlatList,
@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import User from "./Componenets/User";
+import { UserContext } from "../Context/User";
 const Home = ({ navigation }) => {
+  const { ColorSelected } = useContext(UserContext);
   const renderListItem = ({ item }) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate("Messages")}>
@@ -30,7 +32,7 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View>
-        <StatusBar backgroundColor="#9A1854" />
+        <StatusBar backgroundColor={ColorSelected} />
         <FlatList
           data={[
             {
