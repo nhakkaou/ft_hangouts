@@ -7,6 +7,7 @@ const Contacts = () => {
   const [target, setTarg] = useState();
   const { getContat } = useContext(UserContext);
   useEffect(() => {
+    setTarg();
     async function getUsers() {
       try {
         const result = await getContat();

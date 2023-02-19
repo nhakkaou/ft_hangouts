@@ -21,7 +21,6 @@ const User = ({ name, time, message, read = true, img }) => {
         <Avatar source={img} />
         <View
           style={{
-            // backgroundColor: "yellow",
             height: 70,
             padding: 15,
             width: "80%",

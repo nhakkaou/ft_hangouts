@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Avatar from "./Componenets/Avatar";
 import styled from "styled-components";
 import { UserContext } from "../Context/User";
+import { Select } from "./Componenets/Style/AddUser";
 
 const Input = styled.TextInput`
   width: 100%;
@@ -16,6 +17,7 @@ const AddUser = () => {
   const { addContat } = useContext(UserContext);
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [sex, setSex] = useState("M");
   const saveContact = async () => {
     if (phone && name) await addContat(phone, name);
   };
@@ -30,7 +32,7 @@ const AddUser = () => {
       <View
         style={{ width: "80%", justifyContent: "center", alignItems: "center" }}
       >
-        <Avatar />
+        <Avatar sex={sex} />
 
         <Input
           placeholder="Contact name"
@@ -47,6 +49,33 @@ const AddUser = () => {
           }}
           keyboardType="numeric"
         />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "100%",
+            padding: 10,
+          }}
+        >
+          <TouchableOpacity onPress={() => setSex("M")}>
+            <Select
+              enabled={sex == "M"}
+              color={sex == "M" ? "#0086ff" : "#7867679c"}
+            >
+              Male
+            </Select>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setSex("F")}>
+            <Select
+              onPress={() => setSex("F")}
+              enabled={sex == "F"}
+              color={sex == "F" ? "#eb7fed" : "#7867679c"}
+            >
+              Female
+            </Select>
+          </TouchableOpacity>
+          {/* #7867679c */}
+        </View>
         <TouchableOpacity
           style={{
             backgroundColor: "#00a8ff",

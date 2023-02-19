@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./Home";
 import AddUser from "./AddUser";
 import Cnv from "./Conversation";
+import { Image } from "react-native";
 const MyNavigator = () => {
   const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ const MyNavigator = () => {
             fontWeight: "bold",
             fontSize: 23,
           },
+          headerRight: () => <Image source={require("../assets/call.png")} />,
         }}
       />
     </Stack.Navigator>

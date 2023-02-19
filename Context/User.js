@@ -40,7 +40,7 @@ const UserProvider = ({ children }) => {
     });
     db.transaction((tx) => {
       tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(30) NOT NULL UNIQUE,phone VARCHAR(30) NOT NULL UNIQUE, pic BLOB)"
+        "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(30) NOT NULL UNIQUE,phone VARCHAR(30) NOT NULL UNIQUE, pic BLOB, sex ENUM ('F', 'M'))"
       );
     });
   }, []);
