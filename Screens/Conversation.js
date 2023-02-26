@@ -1,13 +1,19 @@
 import React, { useEffect } from "react";
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import Message from "./Componenets/Message";
+import Input from "./Componenets/Input";
 
 const Conversation = () => {
   useEffect(() => {}, []);
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
       <Message avatarSource={"as"} />
       <Message />
+      <Input />
     </View>
   );
 };
