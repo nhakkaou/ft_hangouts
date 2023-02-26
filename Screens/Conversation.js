@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Message from "./Componenets/Message";
 import Input from "./Componenets/Input";
 
@@ -11,9 +11,15 @@ const Conversation = () => {
         flex: 1,
       }}
     >
-      <Message avatarSource={"as"} />
-      <Message />
-      <Input />
+      <ScrollView>
+        <Message avatarSource={"as"} />
+        <Message />
+      </ScrollView>
+      <Input
+        style={{
+          alignContent: "flex-end",
+        }}
+      />
     </View>
   );
 };

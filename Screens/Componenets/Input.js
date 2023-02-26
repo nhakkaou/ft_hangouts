@@ -9,7 +9,6 @@ const Input = () => {
         alignContent: "flex-end",
         flexDirection: "row",
         borderColor: "#fff",
-        // backgroundColor: "#fff",
         justifyContent: "space-around",
       }}
     >
@@ -20,6 +19,7 @@ const Input = () => {
           padding: 5,
           borderWidth: 0.1,
           borderRadius: 50,
+          backgroundColor: "#fff",
         }}
         value={text}
         placeholder="Type your SMS ...!"
